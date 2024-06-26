@@ -53,6 +53,9 @@ const Login = () => {
         fetchUserAddToCart()
        
       }
+       else if (res.data.error) {
+        toast.error(res.data.message);
+      }
     } catch (error) {
       toast.success(error?.response?.data?.message || "An error occurred")
       console.log(error);
