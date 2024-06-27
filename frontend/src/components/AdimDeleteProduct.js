@@ -6,16 +6,13 @@ import RegisterApi from "../utils/Constant";
 const AdminDeleteProduct = ({ productData, onClose, fetchdata }) => {
   const handleDelete = async () => {
     try {
-      const response = await axios.post(RegisterApi.deleteProduct.url,
-      {
-       data: { productId: productData._id },
-        
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.delete(RegisterApi.deleteProduct.url, {
+        data: { productId: productData._id },
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const responseData = response.data;
 
