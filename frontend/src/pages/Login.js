@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import Context from "../context/index";
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -34,28 +35,35 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
    // console.log("Form submitted");
-
+               setLoading(true);
     try {
-      const res = await axios.post(RegisterApi.login.url, {
-        email: data.email,
-        password: data.password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
+      const res = await axios.post(
+        RegisterApi.login.url,
+        {
+          email: data.email,
+          password: data.password,
         },
-        withCredentials: true
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
 
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/")
-        fetchUserDetails()
-        fetchUserAddToCart()
-       
+        navigate("/");
+        fetchUserDetails();
+        fetchUserAddToCart();
+      } else if (res.data.error) {
+        toast.error(res.data.message);
       }
     } catch (error) {
-      toast.success(error?.response?.data?.message || "An error occurred")
+      toast.success(error?.response?.data?.message || "An error occurred");
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -109,9 +117,13 @@ const Login = () => {
               </Link>
             </div>
 
-            <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6">
-              Login
+            <button
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6
+              disabled={loading} "
+            >
+              { loading ? <ClipLoader size={24} color={"#ffffff"} /> : "Login"}
             </button>
+            
           </form>
 
           <p className="my-5">
