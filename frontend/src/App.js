@@ -16,13 +16,14 @@ function App() {
   
   const fetchUserDetails = async () => {
     try{
-    const dataResponse = await fetch(RegisterApi.current_user.url, {
-      method: RegisterApi.current_user.method,
+    const dataResponse = await fetch("http://localhost:8080/api/user-details", {
+      method: "GET",
+
       credentials: "include",
     });
 
     const dataApi = await dataResponse.json();
-  
+  console.log("dataApi", dataApi)
      if (dataApi.success) {
        dispatch(setUserDetails(dataApi.user));
      }

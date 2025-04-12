@@ -19,7 +19,7 @@ const AllProducts = () => {
         });
 
         setAllProduct(response?.data?.data);
-          //console.log("product data", response.data);
+          console.log("product data", response.data);
       } catch (error) {
         console.error("Failed to fetch products:", error);
         // Handle error
