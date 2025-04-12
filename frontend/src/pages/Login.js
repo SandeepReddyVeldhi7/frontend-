@@ -8,6 +8,7 @@ import axios from "axios";
 import RegisterApi from "../utils/Constant.js";
 import toast from "react-hot-toast";
 import Context from "../context/index";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
@@ -50,6 +51,7 @@ const Login = () => {
           withCredentials: true,
         }
       );
+      console.log("res.",res)
 
       if (res.data.success) {
         toast.success(res.data.message);
