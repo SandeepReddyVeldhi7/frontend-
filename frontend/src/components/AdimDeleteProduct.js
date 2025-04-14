@@ -25,7 +25,7 @@ const AdminDeleteProduct = ({ productData, onClose, fetchdata }) => {
       }
     } catch (error) {
       console.error("Error occurred:", error);
-      toast.error("Failed to delete product");
+      toast.error("Failed to delete the  product");
     }
   };
 
@@ -35,7 +35,7 @@ const AdminDeleteProduct = ({ productData, onClose, fetchdata }) => {
         <div className="flex justify-between items-center pb-3">
           <h2 className="font-bold text-lg">Confirm Delete</h2>
           <div
-            className="w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer"
+            className="w-fit ml-auto text-2xl hover:text-red- cursor-pointer"
             onClick={onClose}
           >
             {/* Close icon can be added here */}

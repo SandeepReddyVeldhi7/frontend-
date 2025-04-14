@@ -10,7 +10,8 @@ const CategoryList = () => {
   const fetchCategoryProduct = async () => {
     setLoading(true);
     try {
-      const response = await fetch(RegisterApi.categoryProduct.url);
+      const response = await fetch(RegisterApi.categoryProduct.url,);
+
       if (!response.ok) {
         throw new Error("Failed to fetch category products");
       }
@@ -29,7 +30,7 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container  mx-auto p-4">
       <div className="flex items-center gap-4 justify-between overflow-scroll scrollbar-none">
         {loading
           ? categoryLoading.map((el, index) => {
