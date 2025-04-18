@@ -35,15 +35,15 @@ const AdminDeleteProduct = ({ productData, onClose, fetchdata }) => {
         <div className="flex justify-between items-center pb-3">
           <h2 className="font-bold text-lg">Confirm Delete</h2>
           <div
-            className="w-fit ml-auto text-2xl hover:text-red- cursor-pointer"
+            className="w-fit ml-auto text-2xl hover:text-red-500 cursor-pointer"
             onClick={onClose}
           >
             {/* Close icon can be added here */}
           </div>
         </div>
         <div className="p-4">
-          <p>
-            Are you sure you want to delete the product "
+          <p className="p-1 text-gray-400">
+            Are you sure you want to delete the product.."
             {productData.productName}"?
           </p>
           <div className="flex justify-end mt-4">
